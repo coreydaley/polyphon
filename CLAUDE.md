@@ -65,15 +65,15 @@ builds are unaffected. See `forge.config.ts` and `.github/workflows/release.yml`
 
 | Layer | Technology |
 |---|---|
-| Shell | Electron 41 |
+| Shell | Electron 44 |
 | UI framework | React 19 + TypeScript |
 | Styling | Tailwind CSS v4 |
 | Icons | `lucide-react` — all generic UI icons; `ProviderLogo.tsx` is the exception for provider branding |
 | Typography | `geist` npm package (Geist Sans variable font, loaded locally) |
 | State management | Zustand 5 |
 | Database | `better-sqlite3` v12 + SQLCipher 4.14.0 amalgamation |
-| Build | Electron Forge + Vite 7 |
-| Testing | Vitest 4 (unit/integration) + Playwright (e2e) |
+| Build | Electron Forge 8 + Vite 8 |
+| Testing | Vitest 5 (unit/integration) + Playwright (e2e) |
 
 ---
 
@@ -505,21 +505,21 @@ Electron `userData` directory. See the Key Management section under Security for
 
 ## Website
 
-The Polyphon marketing site lives in the sibling repository [`polyphon-ai/polyphon-ai.github.io`](https://github.com/polyphon-ai/polyphon-ai.github.io) (local path: `../polyphon-ai.github.io`). It uses Hugo with a custom theme and is deployed to [polyphon.ai](https://polyphon.ai) via GitHub Pages.
+The Polyphon site lives on coreydaley.dev at [/projects/polyphon/](https://coreydaley.dev/projects/polyphon/); its source is `content/projects/polyphon/` in the [`coreydaley/coreydaley-dev`](https://github.com/coreydaley/coreydaley-dev) repo.
 
-To update the site from this repo, use the **Update Download Version** workflow (`update-download-version.yml`), which checks out the site repo, updates `hugo.yaml`, creates a release blog post, commits, and triggers a site deploy using the `POLYPHON_SITE_TOKEN` secret.
+The site's Download button links to GitHub's latest release, so a new release needs no site change. Release notes go in `CHANGELOG.md`.
 
 ---
 
 ## Obsidian Plugin
 
-The [`polyphon-ai/obsidian-polyphon`](https://github.com/polyphon-ai/obsidian-polyphon) repository is a TypeScript Obsidian plugin that connects to Polyphon's TCP JSON-RPC API. It does not embed any Polyphon code — it communicates over the socket at runtime.
+The [`coreydaley/obsidian-polyphon`](https://github.com/coreydaley/obsidian-polyphon) repository is a TypeScript Obsidian plugin that connects to Polyphon's TCP JSON-RPC API. It does not embed any Polyphon code — it communicates over the socket at runtime.
 
-**API contract:** `obsidian-polyphon/src/types.ts` manually mirrors `src/shared/api.ts` and `src/shared/types.ts` in this repo. When you change the TCP API shape, update both files and update the API reference in `polyphon-ai.github.io/content/docs/for-developers/api.md`.
+**API contract:** `obsidian-polyphon/src/types.ts` manually mirrors `src/shared/api.ts` and `src/shared/types.ts` in this repo. When you change the TCP API shape, update both files and update the API reference in `coreydaley-dev/content/projects/polyphon/docs/for-developers/api.md`.
 
 ---
 
 ## Ecosystem
 
-This project is part of the polyphon-ai workspace. See `../.github/CLAUDE.md` for how the projects relate to each other.
+See [`ECOSYSTEM.md`](ECOSYSTEM.md) for how the Polyphon repositories relate to each other.
 

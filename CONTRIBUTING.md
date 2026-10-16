@@ -8,7 +8,7 @@ Bug reports and feature requests are welcome — please use the appropriate issu
 
 ## Discussions
 
-For questions, ideas, or general feedback, use [GitHub Discussions](https://github.com/polyphon-ai/.github/discussions). It's a great place to explore ideas with the community before filing a formal request.
+For questions, ideas, or general feedback, open a [GitHub issue](https://github.com/coreydaley/polyphon/issues).
 
 ## Pull requests
 
@@ -16,8 +16,8 @@ Polyphon is not currently accepting pull requests. This may change in the future
 
 ## Security
 
-Please do not report security vulnerabilities through public issues. See the [security policy](https://github.com/polyphon-ai/.github/blob/main/SECURITY.md) for how to report them responsibly.
+Please do not report security vulnerabilities through public issues. See the [security policy](SECURITY.md) for how to report them responsibly.
 
 ## Code of Conduct
 
-By participating in this project, you agree to abide by the [Code of Conduct](https://github.com/polyphon-ai/.github/blob/main/CODE_OF_CONDUCT.md).
+By participating in this project, you agree to abide by the [Code of Conduct](CODE_OF_CONDUCT.md).
