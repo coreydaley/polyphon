@@ -308,7 +308,7 @@ export function registerIpcHandlers(
   });
 
   const ALLOWED_EXTERNAL_HOSTS = new Set([
-    'polyphon.ai',
+    'coreydaley.dev',
     'github.com',
     'x.com',
   ]);

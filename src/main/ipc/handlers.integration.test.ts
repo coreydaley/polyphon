@@ -617,31 +617,31 @@ describe('IPC handlers integration', () => {
   // --- SHELL handlers ---
 
   describe('SHELL_OPEN_EXTERNAL', () => {
-    it('calls shell.openExternal for valid https://polyphon.ai URL', async () => {
-      const url = 'https://polyphon.ai/#download';
+    it('calls shell.openExternal for valid https://coreydaley.dev URL', async () => {
+      const url = 'https://coreydaley.dev/projects/polyphon/';
       await handlers.get(IPC.SHELL_OPEN_EXTERNAL)!({}, url);
       expect(mockShellOpenExternal).toHaveBeenCalledWith(url);
     });
 
-    it('calls shell.openExternal for valid https://polyphon.ai path URL', async () => {
-      const url = 'https://polyphon.ai/releases/latest';
+    it('calls shell.openExternal for valid https://coreydaley.dev path URL', async () => {
+      const url = 'https://coreydaley.dev/projects/polyphon/docs/';
       await handlers.get(IPC.SHELL_OPEN_EXTERNAL)!({}, url);
       expect(mockShellOpenExternal).toHaveBeenCalledWith(url);
     });
 
-    it('blocks subdomain bypass attempt (https://polyphon.ai.evil.com)', async () => {
-      const url = 'https://polyphon.ai.evil.com/malicious';
+    it('blocks subdomain bypass attempt (https://coreydaley.dev.evil.com)', async () => {
+      const url = 'https://coreydaley.dev.evil.com/malicious';
       await handlers.get(IPC.SHELL_OPEN_EXTERNAL)!({}, url);
       expect(mockShellOpenExternal).not.toHaveBeenCalled();
     });
 
     it('blocks non-https URL', async () => {
-      const url = 'http://polyphon.ai/#download';
+      const url = 'http://coreydaley.dev/projects/polyphon/';
       await handlers.get(IPC.SHELL_OPEN_EXTERNAL)!({}, url);
       expect(mockShellOpenExternal).not.toHaveBeenCalled();
     });
 
-    it('blocks non-polyphon.ai domain', async () => {
+    it('blocks a domain outside the allowlist', async () => {
       const url = 'https://evil.com/payload';
       await handlers.get(IPC.SHELL_OPEN_EXTERNAL)!({}, url);
       expect(mockShellOpenExternal).not.toHaveBeenCalled();

@@ -76,12 +76,12 @@ describe('setupAutoUpdater', () => {
     expect(mockCheckForUpdates).not.toHaveBeenCalled();
   });
 
-  it('configures feed URL pointing at polyphon-ai/polyphon', async () => {
+  it('configures feed URL pointing at coreydaley/polyphon', async () => {
     const win = makeWin();
     setupAutoUpdater(makeDb(), win);
     expect(mockSetFeedURL).toHaveBeenCalledWith(expect.objectContaining({
       provider: 'github',
-      owner: 'polyphon-ai',
+      owner: 'coreydaley',
       repo: 'polyphon',
     }));
   });
@@ -261,7 +261,7 @@ describe('changeChannel', () => {
     );
 
     expect(mockCheckForUpdates).not.toHaveBeenCalled();
-    expect(mockFetch).toHaveBeenCalledWith('https://api.github.com/repos/polyphon-ai/polyphon/releases/latest');
+    expect(mockFetch).toHaveBeenCalledWith('https://api.github.com/repos/coreydaley/polyphon/releases/latest');
     expect(getCachedUpdateInfo()).toEqual({ version: '1.0.0' });
 
     vi.unstubAllGlobals();

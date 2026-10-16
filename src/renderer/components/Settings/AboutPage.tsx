@@ -251,25 +251,25 @@ export default function AboutPage() {
               icon: <Bug size={14} strokeWidth={1.75} />,
               label: 'File a bug',
               description: 'Report unexpected behavior or crashes',
-              url: 'https://github.com/polyphon-ai/releases/issues/new?template=bug_report.md',
+              url: 'https://github.com/coreydaley/polyphon/issues/new',
             },
             {
               icon: <Lightbulb size={14} strokeWidth={1.75} />,
               label: 'Request a feature',
               description: 'Suggest improvements or new capabilities',
-              url: 'https://github.com/polyphon-ai/releases/issues/new?template=feature_request.md',
+              url: 'https://github.com/coreydaley/polyphon/issues/new',
             },
             {
               icon: <MessageSquare size={14} strokeWidth={1.75} />,
               label: 'Join the discussion',
               description: 'Ask questions, share ideas, and connect with others',
-              url: 'https://github.com/polyphon-ai/releases/discussions',
+              url: 'https://github.com/coreydaley/polyphon/discussions',
             },
             {
               icon: <ShieldAlert size={14} strokeWidth={1.75} />,
               label: 'Report a vulnerability',
               description: 'Privately disclose a security issue',
-              url: 'https://github.com/polyphon-ai/releases/security/advisories/new',
+              url: 'https://github.com/coreydaley/polyphon/security/advisories/new',
             },
           ].map((item, i) => (
             <button

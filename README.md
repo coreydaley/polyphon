@@ -96,12 +96,12 @@ POLYPHON_DEVTOOLS=1 make run
 
 ## Community
 
-- **Website:** [polyphon.ai](https://polyphon.ai)
+- **Website:** [coreydaley.dev/projects/polyphon](https://coreydaley.dev/projects/polyphon/)
 - **X / Twitter:** [@PolyphonAI](https://x.com/intent/follow?screen_name=PolyphonAI)
 - **GitHub Org:** [github.com/polyphon-ai](https://github.com/polyphon-ai)
 - **GitHub:** [polyphon-ai/polyphon](https://github.com/polyphon-ai/polyphon)
 - **Reddit:** [u/PolyphonAI](https://www.reddit.com/user/PolyphonAI)
-- **Email:** [hello@polyphon.ai](mailto:hello@polyphon.ai)
+- **Email:** [corey@coreydaley.dev](mailto:corey@coreydaley.dev)
 
 ---
 

@@ -1256,7 +1256,7 @@ export default function App(): React.JSX.Element {
                 Search
               </button>
               <button
-                onClick={() => window.polyphon.shell.openExternal('https://polyphon.ai/docs/')}
+                onClick={() => window.polyphon.shell.openExternal('https://coreydaley.dev/projects/polyphon/docs/')}
                 className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-colors text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
               >
                 <BookOpen size={18} strokeWidth={1.75} />
