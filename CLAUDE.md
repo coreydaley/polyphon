@@ -75,7 +75,7 @@ your Polyphon install.
 
 | Layer | Technology |
 |---|---|
-| Language | TypeScript 5 |
+| Language | TypeScript 7 |
 | Build | tsc (NodeNext ESM + declarations) |
 | Testing | Vitest |
 | Runtime | Node.js ≥ 18 (TCP via `node:net`) |
