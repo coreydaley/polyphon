@@ -1,0 +1,45 @@
+{
+  "name": "@polyphon-ai/js",
+  "version": "0.13.1",
+  "description": "JavaScript/TypeScript SDK for the Polyphon JSON-RPC API",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./testing": {
+      "import": "./dist/testing/index.js",
+      "types": "./dist/testing/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc --noEmit && tsc -p tsconfig.build.json",
+    "test": "vitest run",
+    "test-watch": "vitest",
+    "lint": "tsc --noEmit"
+  },
+  "keywords": [
+    "polyphon",
+    "ai",
+    "sdk",
+    "json-rpc",
+    "multi-voice"
+  ],
+  "author": "Corey Daley",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "@vitest/coverage-v8": "^5.0.5",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  }
+}

@@ -1,0 +1,10 @@
+node_modules/
+dist/
+*.js.map
+
+# Internal planning and development docs
+docs/
+
+# SDK token helpers — force-include so *TOKEN* in global gitignore doesn't exclude them
+!src/token.ts
+!src/token.test.ts
