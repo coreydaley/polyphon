@@ -2,7 +2,11 @@
 
 **One chat. Many voices.**
 
-[![CI](https://github.com/polyphon-ai/polyphon/actions/workflows/ci.yml/badge.svg)](https://github.com/polyphon-ai/polyphon/actions/workflows/ci.yml) [![GitHub release](https://img.shields.io/github/v/release/polyphon-ai/polyphon)](https://github.com/polyphon-ai/polyphon/releases/latest) [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE) [![Follow on X](https://img.shields.io/badge/Follow-%40PolyphonAI-000?logo=x&logoColor=white)](https://x.com/intent/follow?screen_name=PolyphonAI)
+> **This project is archived and no longer developed.** The repository is read-only. The SDK, VS Code extension, and Obsidian plugin that used to live in separate repositories are in [`clients/`](clients/) with their full history. Docs: [coreydaley.dev/projects/polyphon](https://coreydaley.dev/projects/polyphon/).
+>
+> **Security note:** released builds up to and including 0.13.1 do **not** encrypt the local database — a build defect shipped a stock SQLite driver, so `PRAGMA key` was silently ignored. The fix is on `main` but was never released. Treat `polyphon.db` as plaintext and rely on FileVault.
+
+[![CI](https://github.com/coreydaley/polyphon/actions/workflows/ci.yml/badge.svg)](https://github.com/coreydaley/polyphon/actions/workflows/ci.yml) [![GitHub release](https://img.shields.io/github/v/release/coreydaley/polyphon)](https://github.com/coreydaley/polyphon/releases/latest) [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE) [![Follow on X](https://img.shields.io/badge/Follow-%40PolyphonAI-000?logo=x&logoColor=white)](https://x.com/intent/follow?screen_name=PolyphonAI)
 
 ![Polyphon screenshot](media/screenshot.png)
 
@@ -42,14 +46,14 @@ API keys are read from your shell environment — set them in `.zshrc` / `.bash_
 
 ### Download
 
-Pre-built installers for **macOS (Apple Silicon)** are available on the [Releases](https://github.com/polyphon-ai/polyphon/releases) page.
+Pre-built installers for **macOS (Apple Silicon)** are available on the [Releases](https://github.com/coreydaley/polyphon/releases) page.
 
 ### Build from source
 
 **Prerequisites:** Node.js 22+, npm
 
 ```sh
-git clone https://github.com/polyphon-ai/polyphon.git
+git clone https://github.com/coreydaley/polyphon.git
 cd polyphon
 make install
 make run
@@ -98,8 +102,7 @@ POLYPHON_DEVTOOLS=1 make run
 
 - **Website:** [coreydaley.dev/projects/polyphon](https://coreydaley.dev/projects/polyphon/)
 - **X / Twitter:** [@PolyphonAI](https://x.com/intent/follow?screen_name=PolyphonAI)
-- **GitHub Org:** [github.com/polyphon-ai](https://github.com/polyphon-ai)
-- **GitHub:** [polyphon-ai/polyphon](https://github.com/polyphon-ai/polyphon)
+- **GitHub:** [coreydaley/polyphon](https://github.com/coreydaley/polyphon)
 - **Reddit:** [u/PolyphonAI](https://www.reddit.com/user/PolyphonAI)
 - **Email:** [corey@coreydaley.dev](mailto:corey@coreydaley.dev)
 

@@ -1,5 +1,7 @@
 # Polyphon ecosystem
 
+> **Archived.** Polyphon is no longer developed. The SDK, VS Code extension, and Obsidian plugin used to live in their own repositories; they are now in [`clients/`](clients/) here, with full history (their tags are prefixed `js/`, `vscode/`, `obsidian/`). The cross-repo workflows below describe how things worked while the project was active.
+
 How the Polyphon repositories relate to each other. Each repository has its own `CLAUDE.md` with project-specific details. (Moved here from the former `polyphon-ai/.github` org repo.)
 
 ## Projects
@@ -7,9 +9,9 @@ How the Polyphon repositories relate to each other. Each repository has its own 
 | Repository | Purpose | Stack |
 |---|---|---|
 | [`polyphon`](https://github.com/coreydaley/polyphon) | Core Electron desktop app | TypeScript, React 19, Electron 41, SQLCipher |
-| [`polyphon-js`](https://github.com/coreydaley/polyphon-js) | JavaScript/TypeScript SDK | TypeScript, Node.js, published as `@polyphon-ai/js` |
-| [`obsidian-polyphon`](https://github.com/coreydaley/obsidian-polyphon) | Obsidian plugin client | TypeScript, Obsidian Plugin API |
-| [`vscode-polyphon`](https://github.com/coreydaley/vscode-polyphon) | VS Code extension | TypeScript, VS Code Extension API |
+| [`clients/polyphon-js`](clients/polyphon-js/) | JavaScript/TypeScript SDK | TypeScript, Node.js, published as `@polyphon-ai/js` |
+| [`clients/obsidian-polyphon`](clients/obsidian-polyphon/) | Obsidian plugin client | TypeScript, Obsidian Plugin API |
+| [`clients/vscode-polyphon`](clients/vscode-polyphon/) | VS Code extension | TypeScript, VS Code Extension API |
 | [`coreydaley-dev`](https://github.com/coreydaley/coreydaley-dev) (`content/projects/polyphon/`) | Website and docs | Hugo, at coreydaley.dev/projects/polyphon/ |
 
 ## How They Interact

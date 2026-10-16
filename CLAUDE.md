@@ -513,7 +513,7 @@ The site's Download button links to GitHub's latest release, so a new release ne
 
 ## Obsidian Plugin
 
-The [`coreydaley/obsidian-polyphon`](https://github.com/coreydaley/obsidian-polyphon) repository is a TypeScript Obsidian plugin that connects to Polyphon's TCP JSON-RPC API. It does not embed any Polyphon code — it communicates over the socket at runtime.
+The Obsidian plugin in [`clients/obsidian-polyphon/`](clients/obsidian-polyphon/) (formerly its own repo) is a TypeScript Obsidian plugin that connects to Polyphon's TCP JSON-RPC API. It does not embed any Polyphon code — it communicates over the socket at runtime.
 
 **API contract:** `obsidian-polyphon/src/types.ts` manually mirrors `src/shared/api.ts` and `src/shared/types.ts` in this repo. When you change the TCP API shape, update both files and update the API reference in `coreydaley-dev/content/projects/polyphon/docs/for-developers/api.md`.
 
