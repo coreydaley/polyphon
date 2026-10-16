@@ -53,7 +53,7 @@ src/
 
 When the Polyphon TCP API changes:
 1. Update `src/types.ts` to match the new shapes
-2. Update the API reference in `polyphon-ai.github.io/content/docs/for-developers/api.md`
+2. Update the API reference in `coreydaley-dev/content/projects/polyphon/docs/for-developers/api.md`
 
 The default API port is **7432**. Users configure host/port in the plugin settings tab.
 

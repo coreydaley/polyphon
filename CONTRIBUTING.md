@@ -221,4 +221,4 @@ Failure screenshots and Docker logs are saved to `tests/e2e-live/artifacts/` (gi
 
 ## Contributing
 
-This repository is not currently accepting pull requests. If you have ideas, feedback, or want to discuss a change, open a [GitHub Discussion](https://github.com/polyphon-ai/.github/discussions) or an issue instead.
+This repository is not currently accepting pull requests. If you have ideas, feedback, or want to discuss a change, open a [GitHub issue](https://github.com/coreydaley/obsidian-polyphon/issues) or an issue instead.

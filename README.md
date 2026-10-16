@@ -71,7 +71,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details on the test suite and archite
 
 ## Community
 
-- [Join the discussion](https://github.com/polyphon-ai/.github/discussions) — questions, ideas, and feedback
+- [Open an issue](https://github.com/coreydaley/obsidian-polyphon/issues) — questions, ideas, and feedback
 - [Open an issue](https://github.com/polyphon-ai/obsidian-polyphon/issues) — bug reports and feature requests
 
 ## License
