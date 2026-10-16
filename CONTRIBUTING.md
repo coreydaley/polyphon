@@ -8,8 +8,8 @@ To contribute to the SDK, open an issue or discussion in the main `polyphon` rep
 
 ## Discussions
 
-For questions, ideas, or feedback about the SDK, use [GitHub Discussions](https://github.com/polyphon-ai/.github/discussions).
+For questions, ideas, or feedback about the SDK, open a [GitHub issue](https://github.com/coreydaley/polyphon-js/issues).
 
 ## Security
 
-Please do not report security vulnerabilities through public issues. See the [security policy](https://github.com/polyphon-ai/.github/blob/main/SECURITY.md) for details.
+Please do not report security vulnerabilities through public issues. See the [security policy](https://github.com/coreydaley/polyphon/blob/main/SECURITY.md) for details.
