@@ -1,0 +1,40 @@
+version: 2
+
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 10
+    groups:
+      # Group all Anthropic SDK updates into a single PR.
+      anthropic:
+        patterns:
+          - "@anthropic-ai/*"
+      # Group all OpenAI SDK updates into a single PR.
+      openai:
+        patterns:
+          - "openai"
+      # Group all Google AI SDK updates into a single PR.
+      google-ai:
+        patterns:
+          - "@google/*"
+      # Group TypeScript toolchain updates (compiler, eslint plugins) into a single PR.
+      typescript-toolchain:
+        patterns:
+          - "typescript"
+          - "@typescript-eslint/*"
+      # Group all vitest / testing dependencies into a single PR.
+      testing:
+        patterns:
+          - "vitest"
+          - "playwright"
+          - "jsdom"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5

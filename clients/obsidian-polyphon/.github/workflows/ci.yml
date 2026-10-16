@@ -1,0 +1,94 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  unit-tests:
+    name: Unit Tests (${{ matrix.os }})
+    strategy:
+      matrix:
+        os: [macos-latest]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run unit tests
+        run: npm test
+
+      - name: Run JSDOM unit tests
+        run: npm run test-unit
+
+  integration-tests:
+    name: Integration Tests (${{ matrix.os }})
+    strategy:
+      matrix:
+        os: [macos-latest]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run integration tests
+        run: npm run test-integration
+
+  e2e-tests-macos:
+    name: E2E Tests (macOS)
+    # macOS: download the .dmg, mount it, copy Obsidian.app to /Applications, then
+    # launch via `open -a` (the existing launchObsidianMacOS strategy). No xvfb
+    # needed — macOS runners have a window server. No playwright install-deps needed
+    # — Electron on macOS bundles its own libraries.
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Download and install Obsidian
+        run: |
+          OBSIDIAN_TAG=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/obsidianmd/obsidian-releases/releases/latest" \
+            | jq -r '.tag_name')
+          if [[ -z "$OBSIDIAN_TAG" || "$OBSIDIAN_TAG" == "null" ]]; then
+            echo "Failed to fetch Obsidian release tag" && exit 1
+          fi
+          OBSIDIAN_VERSION="${OBSIDIAN_TAG#v}"
+          curl -L \
+            "https://github.com/obsidianmd/obsidian-releases/releases/download/${OBSIDIAN_TAG}/Obsidian-${OBSIDIAN_VERSION}.dmg" \
+            -o /tmp/Obsidian.dmg
+          hdiutil attach /tmp/Obsidian.dmg -nobrowse -quiet -mountpoint /tmp/obsidian-mount
+          cp -R /tmp/obsidian-mount/Obsidian.app /Applications/
+          hdiutil detach /tmp/obsidian-mount -quiet
+          # Remove quarantine so Gatekeeper doesn't block the downloaded app on first launch
+          xattr -d com.apple.quarantine /Applications/Obsidian.app 2>/dev/null || true
+          echo "OBSIDIAN_BINARY=/Applications/Obsidian.app/Contents/MacOS/Obsidian" >> "$GITHUB_ENV"
+
+      - name: Build plugin
+        run: npm run build
+
+      - name: Run E2E tests
+        run: npm run test-e2e
