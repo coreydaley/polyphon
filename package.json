@@ -109,27 +109,27 @@
     "dev": "node esbuild.mjs",
     "build": "tsc --noEmit --skipLibCheck && node esbuild.mjs --production",
     "lint": "eslint src",
-    "test": "vitest run --config vitest.unit.config.ts && vitest run --config vitest.integration.config.ts",
-    "test-unit": "vitest run --config vitest.unit.config.ts",
-    "test-integration": "vitest run --config vitest.integration.config.ts",
+    "test": "vitest run --config vitest.unit.config.mts && vitest run --config vitest.integration.config.mts",
+    "test-unit": "vitest run --config vitest.unit.config.mts",
+    "test-integration": "vitest run --config vitest.integration.config.mts",
     "package": "npm run build && vsce package"
   },
   "dependencies": {
     "@polyphon-ai/js": "^0.13.1"
   },
   "devDependencies": {
-    "@types/node": "^25.4.0",
-    "@types/vscode": "^1.85.0",
+    "@types/node": "^26.6.5",
+    "@types/vscode": "~1.85.0",
     "@types/vscode-webview": "^1.57.5",
     "@typescript-eslint/eslint-plugin": "^8.57.0",
     "@typescript-eslint/parser": "^8.57.0",
-    "@vscode/vsce": "^3.0.0",
+    "@vscode/vsce": "^4.0.0",
     "builtin-modules": "^5.0.0",
-    "esbuild": "^0.27.3",
+    "esbuild": "^0.28.2",
     "eslint": "^10.0.3",
-    "happy-dom": "^20.8.9",
+    "happy-dom": "^21.0.1",
     "tslib": "^2.4.0",
-    "typescript": "^5.0.4",
-    "vitest": "^4.0.18"
+    "typescript": "~6.0",
+    "vitest": "^5.0.5"
   }
 }

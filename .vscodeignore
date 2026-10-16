@@ -4,8 +4,8 @@ esbuild.mjs
 tsconfig.json
 eslint.config.mjs
 Makefile
-vitest.unit.config.ts
-vitest.integration.config.ts
+vitest.unit.config.mts
+vitest.integration.config.mts
 
 # Dev environment
 .vscode/

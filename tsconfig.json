@@ -4,6 +4,7 @@
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "lib": ["ES2020", "DOM"],
+    "types": ["node", "vscode", "vscode-webview"],
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
