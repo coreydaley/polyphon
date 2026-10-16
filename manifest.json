@@ -2,7 +2,7 @@
   "id": "polyphon",
   "name": "Polyphon",
   "version": "0.1.0",
-  "minAppVersion": "1.0.0",
+  "minAppVersion": "1.7.2",
   "description": "Connect to a running Polyphon instance and have multi-voice AI conversations from within your vault.",
   "author": "Corey Daley",
   "authorUrl": "https://github.com/coreydaley",

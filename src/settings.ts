@@ -1,4 +1,4 @@
-import { App, Notice, PluginSettingTab, Setting } from "obsidian";
+import { App, Notice, PluginSettingTab, Setting, type TextComponent } from "obsidian";
 import type PolyphonPlugin from "./main";
 import { readLocalToken } from "@polyphon-ai/js";
 
@@ -54,10 +54,12 @@ export class PolyphonSettingTab extends PluginSettingTab {
           })
       );
 
+    let tokenInput: TextComponent | undefined;
     new Setting(containerEl)
       .setName("API token")
       .setDesc("Authentication token. Use 'read local token' to auto-fill from the running instance.")
       .addText((text) => {
+        tokenInput = text;
         text.inputEl.type = "password";
         text
           .setPlaceholder("Auto-detected from local install")
@@ -76,7 +78,7 @@ export class PolyphonSettingTab extends PluginSettingTab {
               const token = readLocalToken();
               this.plugin.settings.token = token;
               await this.plugin.saveSettings();
-              this.display(); // re-render to show updated value
+              tokenInput?.setValue(token);
               new Notice("Polyphon: token loaded from local install.");
             } catch (err) {
               new Notice(`Polyphon: could not read token — is Polyphon running? (${String(err)})`);

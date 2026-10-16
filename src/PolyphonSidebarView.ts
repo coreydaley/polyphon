@@ -11,7 +11,7 @@ export class PolyphonSidebarView extends ItemView {
   private plugin: PolyphonPlugin;
   private client: PolyphonClient;
   private status: ConnectionStatus = "disconnected";
-  private reconnectTimer: ReturnType<typeof setTimeout> | null = null;
+  private reconnectTimer: number | null = null;
   private readonly RECONNECT_INTERVAL_MS = 5000;
   private suppressDisconnectHandler = false;
 
@@ -319,7 +319,7 @@ export class PolyphonSidebarView extends ItemView {
 
   private scheduleReconnect(): void {
     this.clearReconnectTimer();
-    this.reconnectTimer = setTimeout(() => {
+    this.reconnectTimer = window.setTimeout(() => {
       this.reconnectTimer = null;
       void this.connect();
     }, this.RECONNECT_INTERVAL_MS);
@@ -327,7 +327,7 @@ export class PolyphonSidebarView extends ItemView {
 
   private clearReconnectTimer(): void {
     if (this.reconnectTimer !== null) {
-      clearTimeout(this.reconnectTimer);
+      window.clearTimeout(this.reconnectTimer);
       this.reconnectTimer = null;
     }
   }
@@ -367,7 +367,7 @@ export class PolyphonSidebarView extends ItemView {
       const comps = await this.client.compositions();
       this.compositions = comps.map((c) => ({
         ...c,
-        voices: c.voices.map((v, i) => ({ ...v, side: i % 2 === 0 ? "left" : "right" as "left" | "right" })),
+        voices: c.voices.map((v, i) => ({ ...v, side: i % 2 === 0 ? "left" : "right" })),
       }));
       this.populateCompositionSelect();
     } catch {
