@@ -1,0 +1,468 @@
+/* VS Code variable aliases */
+:root {
+  --ph-bg: var(--vscode-sideBar-background);
+  --ph-bg-alt: var(--vscode-editor-background);
+  --ph-border: var(--vscode-panel-border, var(--vscode-widget-border, rgba(128,128,128,0.2)));
+  --ph-text: var(--vscode-foreground);
+  --ph-text-muted: var(--vscode-descriptionForeground);
+  --ph-text-faint: var(--vscode-disabledForeground);
+  --ph-accent: var(--vscode-button-background);
+  --ph-accent-fg: var(--vscode-button-foreground);
+  --ph-accent-hover: var(--vscode-button-hoverBackground);
+  --ph-btn-bg: var(--vscode-button-secondaryBackground);
+  --ph-btn-fg: var(--vscode-button-secondaryForeground);
+  --ph-btn-hover: var(--vscode-button-secondaryHoverBackground);
+  --ph-input-bg: var(--vscode-input-background);
+  --ph-input-fg: var(--vscode-input-foreground);
+  --ph-input-border: var(--vscode-input-border, var(--vscode-panel-border, rgba(128,128,128,0.2)));
+  --ph-focus: var(--vscode-focusBorder);
+  --ph-hover: var(--vscode-list-hoverBackground);
+  --ph-font: var(--vscode-font-family);
+  --ph-size: var(--vscode-font-size, 13px);
+  --ph-size-sm: 11px;
+  --ph-radius-s: 3px;
+  --ph-radius-m: 4px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--ph-bg);
+  color: var(--ph-text);
+  font-family: var(--ph-font);
+  font-size: var(--ph-size);
+  line-height: 1.4;
+}
+
+/* ---- Sidebar layout ---- */
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ---- Branding header ---- */
+.polyphon-header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 12px 8px;
+  border-bottom: 1px solid var(--ph-border);
+  flex-shrink: 0;
+}
+
+.polyphon-header__logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.polyphon-header__logo svg {
+  border-radius: 5px;
+}
+
+.polyphon-header__text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1;
+}
+
+.polyphon-header__wordmark {
+  font-size: var(--ph-size);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--ph-text);
+  line-height: 1.2;
+}
+
+.polyphon-header__tagline {
+  font-size: 9px;
+  color: var(--ph-text-faint);
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+/* ---- Status badge ---- */
+.polyphon-status-bar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.polyphon-status-badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+  cursor: default;
+}
+
+.polyphon-status-badge--clickable { cursor: pointer; }
+
+.polyphon-status-bar--disconnected .polyphon-status-badge {
+  background: rgba(128,128,128,0.15);
+  color: var(--ph-text-muted);
+}
+.polyphon-status-bar--connecting .polyphon-status-badge {
+  background: rgba(234,179,8,0.15);
+  color: #e5a823;
+}
+.polyphon-status-bar--connected .polyphon-status-badge {
+  background: rgba(34,197,94,0.15);
+  color: #4ade80;
+}
+.polyphon-status-bar--error .polyphon-status-badge {
+  background: rgba(239,68,68,0.15);
+  color: #f87171;
+}
+
+/* ---- Select ---- */
+.polyphon-select {
+  flex: 1;
+  background: var(--ph-input-bg);
+  border: 1px solid var(--ph-input-border);
+  border-radius: var(--ph-radius-s);
+  padding: 4px 6px;
+  color: var(--ph-input-fg);
+  font-size: var(--ph-size);
+  font-family: var(--ph-font);
+}
+.polyphon-select:focus { outline: 1px solid var(--ph-focus); }
+
+/* ---- Top bar (composition) ---- */
+.polyphon-top-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--ph-border);
+  flex-shrink: 0;
+}
+
+/* ---- Session row ---- */
+.polyphon-session-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-bottom: 1px solid var(--ph-border);
+  flex-shrink: 0;
+}
+.polyphon-session-row--hidden { display: none; }
+
+/* ---- Voice roster ---- */
+.polyphon-voice-roster {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-bottom: 1px solid var(--ph-border);
+  background: var(--ph-bg-alt);
+  flex-shrink: 0;
+}
+.polyphon-voice-roster--hidden { display: none; }
+
+.polyphon-voice-chip {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--voice-color) 18%, transparent);
+  border: 1.5px solid color-mix(in srgb, var(--voice-color) 50%, transparent);
+  color: var(--voice-color);
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: box-shadow 0.2s;
+}
+
+.polyphon-voice-chip--pending {
+  border-style: dashed;
+  animation: polyphon-roster-spin 3s linear infinite;
+}
+
+.polyphon-voice-chip--streaming {
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--voice-color) 40%, transparent),
+              0 0 8px color-mix(in srgb, var(--voice-color) 50%, transparent);
+  animation: polyphon-roster-pulse 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes polyphon-roster-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes polyphon-roster-pulse {
+  0%, 100% { box-shadow: 0 0 0 2px color-mix(in srgb, var(--voice-color) 40%, transparent),
+                          0 0 8px color-mix(in srgb, var(--voice-color) 50%, transparent); }
+  50%       { box-shadow: 0 0 0 3px color-mix(in srgb, var(--voice-color) 60%, transparent),
+                          0 0 14px color-mix(in srgb, var(--voice-color) 70%, transparent); }
+}
+
+/* ---- Conversation ---- */
+.polyphon-conversation {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  user-select: text;
+}
+
+/* ---- Message (pm = polyphon-message) ---- */
+.pm {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.pm--user,
+.pm--right {
+  align-items: flex-end;
+}
+
+.pm--user .pm__header,
+.pm--right .pm__header {
+  flex-direction: row-reverse;
+}
+
+.pm__body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 100%;
+}
+
+.pm__header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.pm__avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  background: rgba(128,128,128,0.15);
+  color: var(--ph-text-muted);
+}
+
+.pm__name {
+  font-size: var(--ph-size-sm);
+  font-weight: 600;
+  color: var(--ph-text-muted);
+  line-height: 1.2;
+}
+
+.pm__status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.pm__status-dot--pending {
+  opacity: 0.5;
+  animation: polyphon-pulse 1.5s ease-in-out infinite;
+}
+
+.pm__status-dot--streaming {
+  animation: polyphon-pulse 0.8s ease-in-out infinite;
+}
+
+@keyframes polyphon-pulse {
+  0%, 100% { opacity: 0.3; }
+  50%       { opacity: 1; }
+}
+
+.pm__bubble {
+  background: var(--ph-bg-alt);
+  border-radius: var(--ph-radius-m);
+  border-left: 3px solid var(--ph-border);
+  border-right: 3px solid transparent;
+  padding: 7px 10px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.5;
+  font-size: var(--ph-size);
+  color: var(--ph-text);
+  width: 100%;
+}
+
+.pm--right .pm__bubble,
+.pm--user .pm__bubble {
+  border-left: 3px solid transparent;
+  border-right: 3px solid var(--ph-border);
+}
+
+.pm--streaming .pm__bubble:not(.pm__bubble--thinking)::after {
+  content: "▋";
+  opacity: 1;
+  animation: polyphon-blink 0.8s step-end infinite;
+  margin-left: 1px;
+}
+
+@keyframes polyphon-blink {
+  50% { opacity: 0; }
+}
+
+.pm__bubble--thinking {
+  background: transparent;
+  border: none;
+  padding: 4px 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pm--right .pm__bubble--thinking,
+.pm--user .pm__bubble--thinking {
+  justify-content: flex-end;
+  border: none;
+}
+
+.pm__thinking-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: polyphon-bounce 1s ease-in-out infinite;
+}
+
+@keyframes polyphon-bounce {
+  0%, 80%, 100% { transform: translateY(0); }
+  40%           { transform: translateY(-5px); }
+}
+
+.pm__bubble--no-response {
+  color: var(--ph-text-faint);
+  font-style: italic;
+  background: transparent;
+  border-color: transparent;
+}
+
+/* ---- Input wrapper ---- */
+.polyphon-input-wrapper {
+  position: relative;
+  border-top: 1px solid var(--ph-border);
+  flex-shrink: 0;
+}
+
+/* ---- @mention dropdown ---- */
+.polyphon-mention-dropdown {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background: var(--ph-bg);
+  border: 1px solid var(--ph-border);
+  border-radius: var(--ph-radius-m);
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.2);
+  overflow: hidden;
+  z-index: 100;
+  margin-bottom: 2px;
+}
+.polyphon-mention-dropdown--hidden { display: none; }
+
+.polyphon-mention-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: var(--ph-size);
+  color: var(--ph-text);
+}
+.polyphon-mention-item:hover,
+.polyphon-mention-item--active { background: var(--ph-hover); }
+
+.polyphon-mention-avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.polyphon-mention-name { font-weight: 500; }
+
+/* ---- Context bar ---- */
+.polyphon-context-bar {
+  padding: 4px 10px 0;
+}
+
+.polyphon-btn--context {
+  font-size: var(--ph-size-sm);
+  padding: 2px 8px;
+  opacity: 0.7;
+}
+.polyphon-btn--context--active {
+  opacity: 1;
+  background: color-mix(in srgb, var(--ph-accent) 20%, transparent) !important;
+  color: var(--ph-accent) !important;
+}
+
+/* ---- Input area ---- */
+.polyphon-input-area {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 6px 10px 8px;
+}
+
+.polyphon-input {
+  resize: none;
+  background: var(--ph-input-bg);
+  border: 1px solid var(--ph-input-border);
+  border-radius: var(--ph-radius-m);
+  padding: 8px;
+  color: var(--ph-input-fg);
+  font-family: var(--ph-font);
+  font-size: var(--ph-size);
+  width: 100%;
+}
+.polyphon-input:focus { outline: 1px solid var(--ph-focus); }
+.polyphon-input:disabled { opacity: 0.5; }
+
+/* ---- Buttons ---- */
+.polyphon-btn {
+  background: var(--ph-btn-bg);
+  border: none;
+  border-radius: var(--ph-radius-s);
+  padding: 4px 10px;
+  cursor: pointer;
+  color: var(--ph-btn-fg);
+  font-size: var(--ph-size);
+  font-family: var(--ph-font);
+}
+.polyphon-btn:hover { background: var(--ph-btn-hover); }
+.polyphon-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.polyphon-btn--send {
+  background: var(--ph-accent);
+  color: var(--ph-accent-fg);
+  align-self: flex-end;
+  padding: 6px 16px;
+}
+.polyphon-btn--send:hover { background: var(--ph-accent-hover); }
+.polyphon-btn--new { font-size: var(--ph-size-sm); padding: 2px 10px; white-space: nowrap; }

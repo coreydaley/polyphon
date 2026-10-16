@@ -1,0 +1,24 @@
+# Source and tooling
+src/
+esbuild.mjs
+tsconfig.json
+eslint.config.mjs
+Makefile
+vitest.unit.config.mts
+vitest.integration.config.mts
+
+# Dev environment
+.vscode/
+.claude/
+.github/
+.gitignore
+
+# Dev-only docs
+CLAUDE.md
+CONTRIBUTING.md
+
+# Source maps
+dist/**/*.js.map
+
+# Dependencies (bundled by esbuild)
+node_modules/

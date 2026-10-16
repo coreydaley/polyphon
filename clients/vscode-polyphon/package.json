@@ -1,0 +1,135 @@
+{
+  "name": "vscode-polyphon",
+  "displayName": "Polyphon",
+  "description": "Multi-voice AI conversations in VS Code via a running Polyphon instance",
+  "version": "0.1.0",
+  "publisher": "polyphon-ai",
+  "license": "MIT",
+  "author": "Polyphon AI",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/polyphon-ai/vscode-polyphon"
+  },
+  "keywords": [
+    "ai",
+    "polyphon",
+    "multi-voice",
+    "chat"
+  ],
+  "categories": [
+    "AI",
+    "Other"
+  ],
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "icon": "media/icon.png",
+  "preview": true,
+  "galleryBanner": {
+    "color": "#1e1b4b",
+    "theme": "dark"
+  },
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "polyphon",
+          "title": "Polyphon",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "polyphon": [
+        {
+          "id": "polyphon.sidebar",
+          "name": "Polyphon",
+          "type": "webview",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "polyphon.connect",
+        "title": "Polyphon: Connect"
+      },
+      {
+        "command": "polyphon.disconnect",
+        "title": "Polyphon: Disconnect"
+      },
+      {
+        "command": "polyphon.newSession",
+        "title": "Polyphon: New Session"
+      },
+      {
+        "command": "polyphon.askAboutSelection",
+        "title": "Polyphon: Ask About Selection"
+      },
+      {
+        "command": "polyphon.readToken",
+        "title": "Polyphon: Read Local API Token"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "polyphon.askAboutSelection",
+          "when": "editorHasSelection",
+          "group": "polyphon"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Polyphon",
+      "properties": {
+        "polyphon.host": {
+          "type": "string",
+          "default": "127.0.0.1",
+          "description": "Polyphon API host"
+        },
+        "polyphon.port": {
+          "type": "number",
+          "default": 7432,
+          "description": "Polyphon API port"
+        },
+        "polyphon.token": {
+          "type": "string",
+          "default": "",
+          "description": "Polyphon API token. Use the 'Polyphon: Read Local API Token' command to auto-populate."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "dev": "node esbuild.mjs",
+    "build": "tsc --noEmit --skipLibCheck && node esbuild.mjs --production",
+    "lint": "eslint src",
+    "test": "vitest run --config vitest.unit.config.mts && vitest run --config vitest.integration.config.mts",
+    "test-unit": "vitest run --config vitest.unit.config.mts",
+    "test-integration": "vitest run --config vitest.integration.config.mts",
+    "package": "npm run build && vsce package"
+  },
+  "dependencies": {
+    "@polyphon-ai/js": "^0.13.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "@types/vscode": "~1.85.0",
+    "@types/vscode-webview": "^1.57.5",
+    "@typescript-eslint/eslint-plugin": "^8.57.0",
+    "@typescript-eslint/parser": "^8.57.0",
+    "@vscode/vsce": "^4.0.0",
+    "builtin-modules": "^5.0.0",
+    "esbuild": "^0.28.2",
+    "eslint": "^10.0.3",
+    "happy-dom": "^21.0.1",
+    "tslib": "^2.4.0",
+    "typescript": "~6.0",
+    "vitest": "^5.0.5"
+  }
+}
