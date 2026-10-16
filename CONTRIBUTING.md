@@ -53,4 +53,4 @@ Install locally in VS Code: **Extensions → ⋯ → Install from VSIX…**
 
 ## Contributing
 
-This repository is not currently accepting pull requests. If you have ideas, feedback, or want to discuss a change, open a [GitHub Discussion](https://github.com/polyphon-ai/.github/discussions) or an issue instead.
+This repository is not currently accepting pull requests. If you have ideas, feedback, or want to discuss a change, open a [GitHub issue](https://github.com/coreydaley/vscode-polyphon/issues) or an issue instead.

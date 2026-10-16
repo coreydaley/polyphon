@@ -90,7 +90,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for architecture details and contribution
 
 ## Community
 
-- [Join the discussion](https://github.com/polyphon-ai/.github/discussions) — questions, ideas, and feedback
+- [Open an issue](https://github.com/coreydaley/vscode-polyphon/issues) — questions, ideas, and feedback
 - [Open an issue](https://github.com/polyphon-ai/vscode-polyphon/issues) — bug reports and feature requests
 
 ## License
