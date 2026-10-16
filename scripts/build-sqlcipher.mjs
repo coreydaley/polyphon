@@ -18,8 +18,8 @@
  *   Electron uses a different ABI (NODE_MODULE_VERSION) than system Node.js, so the
  *   same .node binary cannot be used for both Vitest tests and the Electron app.
  *   The Node.js build is the default (lives in build/Release/) and is used by Vitest.
- *   electron-rebuild overwrites it with the Electron build before the app starts.
- *   The electron build is also saved to prebuilt-electron/ for the make install flow.
+ *   The Electron build is saved to prebuilt-electron/ and loaded via `nativeBinding`
+ *   (src/main/db/index.ts) and swapped in at package time (forge.config.ts).
  */
 
 import { execSync } from 'node:child_process';
@@ -97,18 +97,37 @@ patchGypFiles();
 
 const exec = (cmd, opts) => execSync(cmd, { stdio: 'inherit', cwd: root, ...opts });
 
+// node-gyp maps npm's default "notice" loglevel (inherited via npm_config_loglevel)
+// to its most verbose level, which dumps the full process environment into the
+// install log. Pin it explicitly so secrets in the environment never reach logs.
+const nodeGyp = (extraArgs) =>
+  exec(`"${nodeGypBin}" rebuild --loglevel=info --sqlite3="${sqlcipherDir}" --directory="${bsqliteDir}" ${extraArgs}`);
+
+// Fail the build rather than silently shipping a stock (unencrypted) SQLite.
+function assertSqlcipher(binaryPath) {
+  if (!readFileSync(binaryPath).includes('sqlcipher')) {
+    console.error(`ERROR: ${binaryPath} was not linked against SQLCipher`);
+    process.exit(1);
+  }
+}
+
+const releaseBinary = join(bsqliteDir, 'build', 'Release', 'better_sqlite3.node');
+
 if (mode === 'node') {
   console.log('Building better-sqlite3 + SQLCipher for system Node.js (Vitest)...');
-  exec(`"${nodeGypBin}" rebuild --sqlite3="${sqlcipherDir}" --directory="${bsqliteDir}"`);
+  nodeGyp('');
+  assertSqlcipher(releaseBinary);
   console.log('✓ Node.js build complete');
 } else if (mode === 'electron') {
-  console.log('Building better-sqlite3 + SQLCipher for Electron...');
-  exec(`npx electron-rebuild -f -w better-sqlite3 --extra-args="--sqlite3=${sqlcipherDir}"`);
+  // Build directly with node-gyp against Electron headers. electron-rebuild is
+  // not used: it prefers downloading a stock prebuilt binary and has no way to
+  // pass --sqlite3 through to node-gyp.
+  const electronVersion = JSON.parse(readFileSync(join(root, 'node_modules', 'electron', 'package.json'), 'utf8')).version;
+  console.log(`Building better-sqlite3 + SQLCipher for Electron ${electronVersion}...`);
+  nodeGyp(`--runtime=electron --target=${electronVersion} --dist-url=https://electronjs.org/headers`);
+  assertSqlcipher(releaseBinary);
   mkdirSync(electronBuildDir, { recursive: true });
-  copyFileSync(
-    join(bsqliteDir, 'build', 'Release', 'better_sqlite3.node'),
-    join(electronBuildDir, 'better_sqlite3.node'),
-  );
+  copyFileSync(releaseBinary, join(electronBuildDir, 'better_sqlite3.node'));
   console.log(`✓ Electron build complete (also saved to prebuilt-electron/)`);
 } else {
   console.error(`Unknown mode: ${mode}. Use --mode=node or --mode=electron`);

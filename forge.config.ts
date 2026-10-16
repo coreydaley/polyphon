@@ -40,7 +40,7 @@ const config: ForgeConfig = {
   },
   // Skip Forge's built-in native module rebuild. better-sqlite3 is built with
   // the SQLCipher amalgamation in the postinstall script (build-sqlcipher.mjs
-  // --mode=electron) using electron-rebuild with the --sqlite3 extra arg.
+  // --mode=electron), which runs node-gyp against the Electron headers.
   // Letting Forge rebuild it here would overwrite the SQLCipher binary with a
   // stock SQLite build.
   rebuildConfig: { onlyModules: [] },

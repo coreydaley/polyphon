@@ -32,7 +32,7 @@
     "@electron-forge/plugin-fuses",
     "@electron-forge/plugin-vite",
     "@electron/fuses",
-    "@electron/rebuild",
+    "node-gyp",
     "@vitest/coverage-v8"
   ]
 }
